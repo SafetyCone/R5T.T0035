@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 using R5T.T0035;
 
@@ -12,6 +13,22 @@ namespace System
             string namespaceNameToken)
         {
             var output = $"{baseNamespaceName}{namespaceName.TokenSeparator()}{namespaceNameToken}";
+            return output;
+        }
+
+        public static string[] GetTokens(this INamespaceName namespaceName,
+            string namespaceNameValue)
+        {
+            var output = StringHelper.Split(namespaceName.TokenSeparator(), namespaceNameValue);
+            return output;
+        }
+
+        public static string GetLastToken(this INamespaceName namespaceName,
+            string fullyQualifiedTypeNameValue)
+        {
+            var tokens = namespaceName.GetTokens(fullyQualifiedTypeNameValue);
+
+            var output = tokens.Last();
             return output;
         }
 

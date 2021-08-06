@@ -15,6 +15,23 @@ namespace System
             return output;
         }
 
+        public static bool Is(this INamespaceName _, string namespaceName, string targetNamespaceName)
+        {
+            var output = namespaceName == targetNamespaceName;
+            return output;
+        }
+
+        public static bool IsIn(this INamespaceName _, string namespaceName, string baseNamespaceName)
+        {
+            if (namespaceName.Length < baseNamespaceName.Length)
+            {
+                return false;
+            }
+
+            var output = namespaceName.Substring(0, baseNamespaceName.Length) == baseNamespaceName;
+            return output;
+        }
+
         public static string TokenSeparator(this INamespaceName _)
         {
             return Strings.Period;

@@ -8,7 +8,13 @@ namespace System
 {
     public static class INamespaceNameExtensions
     {
-        public static IMicrosoftNamespaceName System(this INamespaceName _)
+        public static bool IsInMicrosoft(this INamespaceName namespaceName, string namspaceNameValue)
+        {
+            var output = namespaceName.IsIn(namspaceNameValue, namespaceName.Microsoft().Value());
+            return output;
+        }
+
+        public static IMicrosoftNamespaceName Microsoft(this INamespaceName _)
         {
             return MicrosoftNamespaceName.Instance;
         }

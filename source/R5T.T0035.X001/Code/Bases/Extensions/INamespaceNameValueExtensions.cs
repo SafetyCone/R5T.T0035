@@ -8,6 +8,12 @@ namespace System
 {
     public static class INamespaceNameValueExtensions
     {
+        public static string _Default(this INamespaceNameValue _)
+        {
+            return Strings.Empty;
+        }
+
+
         public static string System(this INamespaceNameValue _)
         {
             return SystemNamespaceNames.System;

@@ -8,9 +8,31 @@ namespace System
 {
     public static class INamespaceNameExtensions
     {
-        public static bool IsInSystem(this INamespaceName namespaceName, string namespaceNameValue)
+        public static bool IsDefault(this INamespaceName _,
+            string namespaceName)
         {
-            var output = namespaceName.IsIn(namespaceNameValue, namespaceName.System().Value());
+            var defaultNamespaceName = _.Values()._Default();
+
+            var output = namespaceName == defaultNamespaceName;
+            return output;
+        }
+
+        ///// <summary>
+        ///// Returns true if <paramref name="namespaceName"/> is not the default.
+        ///// </summary>
+        //public static bool IsOverridden(this INamespaceName _,
+        //    string namespaceName)
+        //{
+        //    var isDefault = _.IsDefault(namespaceName);
+
+        //    var output = !isDefault;
+        //    return output;
+        //}
+
+        public static bool IsInSystem(this INamespaceName _,
+            string namespaceName)
+        {
+            var output = _.IsIn(namespaceName, _.System().Value());
             return output;
         }
 

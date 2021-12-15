@@ -24,6 +24,30 @@ namespace System
             return output;
         }
 
+        /// <summary>
+        /// Enumerates the namespace and all sub-namespaces in a namespace.
+        /// For example: R5T.T0064.X001 => {R5T.T0064.X001, R5T.T0064, R5T }.
+        /// </summary>
+        public static IEnumerable<string> EnumerateNamespaceAndSubNamespaces(this INamespaceName _,
+            string namespaceName)
+        {
+            var currentNamespace = namespaceName;
+
+            yield return currentNamespace;
+
+            var indexOfLastTokenSeparator = currentNamespace.LastIndexOf(_.TokenSeparatorCharacter());
+            while(StringHelper.IsFound(indexOfLastTokenSeparator))
+            {
+                var subNamespace = currentNamespace.Substring(0, indexOfLastTokenSeparator);
+
+                yield return subNamespace;
+
+                currentNamespace = subNamespace;
+
+                indexOfLastTokenSeparator = currentNamespace.LastIndexOf(_.TokenSeparatorCharacter());
+            }
+        }
+
         public static string[] GetTokens(this INamespaceName _,
             string namespaceName)
         {

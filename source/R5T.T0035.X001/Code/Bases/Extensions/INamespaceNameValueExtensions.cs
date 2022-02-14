@@ -1,5 +1,7 @@
 ﻿using System;
 
+using R5T.Magyar;
+
 using R5T.T0035;
 using R5T.T0035.X001;
 

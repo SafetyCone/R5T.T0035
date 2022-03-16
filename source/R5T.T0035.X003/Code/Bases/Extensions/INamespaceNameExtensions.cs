@@ -26,6 +26,13 @@ namespace System
             return output;
         }
 
+        public static string CombineTokens(this INamespaceName _,
+            params string[] namespaceNameTokens)
+        {
+            var output = _.CombineTokens(namespaceNameTokens.AsEnumerable());
+            return output;
+        }
+
         /// <summary>
         /// Enumerates the namespace and all sub-namespaces in a namespace.
         /// For example: R5T.T0064.X001 => {R5T.T0064.X001, R5T.T0064, R5T }.

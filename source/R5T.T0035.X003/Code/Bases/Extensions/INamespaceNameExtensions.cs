@@ -57,6 +57,14 @@ namespace System
             }
         }
 
+        public static bool Equal(this INamespaceName _,
+            string namespaceNameX,
+            string namespaceNameY)
+        {
+            var output = namespaceNameX == namespaceNameY;
+            return output;
+        }
+
         public static string[] GetTokens(this INamespaceName _,
             string namespaceName)
         {

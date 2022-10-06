@@ -22,7 +22,7 @@ namespace System
 
             var nameAliases = usingDirectivesSpecification.NameAliases
                 .Select(x => x.GetUsingDirectiveSyntax().AppendBlankLine())
-                .Now();
+                .Now_OLD();
 
             var output = compilationUnit
                 .SetUsings(usingDirectiveBlocks)
